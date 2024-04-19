@@ -1,7 +1,8 @@
-import net.ripAdbisor.hostelerias.gestor.herramientas;
+import net.ripAdbisor.hostelerias.gestor.Herramientas;
 
-public class main {
+public class Main {
     public static void main(String[] args) throws Exception {
-        herramientas.añadirRestaurante();
+        Herramientas.añadirRestaurante();
+        Herramientas.mostrarRestaurante();
     }
 }
