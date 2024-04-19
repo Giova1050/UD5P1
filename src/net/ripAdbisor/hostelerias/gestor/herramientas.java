@@ -6,26 +6,22 @@ import java.util.Scanner;
 
 import net.ripAdbisor.hostelerias.Restaurante;
 
-public class herramientas {
+public class Herramientas {
 
-    static ArrayList<Restaurante> listaRestaurante = new ArrayList<>();
+    private static ArrayList<Restaurante> listaRestaurante = new ArrayList<>();
     final static Scanner scanner = new Scanner(System.in);
 
     public static void añadirRestaurante() {
 
-        Restaurante nuevoRestaurante = new Restaurante(null, null, 0, 0);
-
-        for (Restaurante nuevRestaurante : listaRestaurante) {
-            if (nuevRestaurante == null) {
-                listaRestaurante.add(nuevoRestaurante);
-            }
-        }
+        String nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante:");
+        Restaurante nuevoRestaurante = new Restaurante(nombre, null, 0, 0);
+        listaRestaurante.add(nuevoRestaurante);
 
     }
 
-    public void mostrarRestaurante() {
+    public static void mostrarRestaurante() {
         for (int i = 0; i < listaRestaurante.size(); i++) {
-            System.out.println(listaRestaurante.get(i));
+            JOptionPane.showMessageDialog(null, listaRestaurante.get(i), "Restaurante " + (i+1), JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -37,18 +33,26 @@ public class herramientas {
             System.out.println(listaRestaurante.get(i));
             opcionEliminar = scanner.nextLine();
             for (Restaurante restaurante : listaRestaurante) {
-                if (restaurante.getNombre().equalsIgnoreCase(opcionEliminar) ) {
-                    restaurante = null;
+                if (restaurante.getNombre().equalsIgnoreCase(opcionEliminar)) {
+                    listaRestaurante.remove(restaurante);
                     borrar = true;
-                    String mensajeborrar = borrar ? "Se ha borrado el restaurante" : "No se ha borrado el restaurante";
-                    System.out.println(mensajeborrar);
                 }
             }
+            String mensajeborrar = borrar ? "Se ha borrado el restaurante" : "No se ha borrado el restaurante";
+            System.out.println(mensajeborrar);
         }
     }
 
-    public void editarRestaurante() {
-
+    public void editarRestaurante(String nombre) {
+        String opcionRestaurante;
+        String opcionEditar;
+        for (int i = 0; i < listaRestaurante.size(); i++) {
+            System.out.println("Estos son todos los restaurantes para modificar, cual quieres modificar "
+                    + listaRestaurante.get(i));
+            opcionRestaurante = scanner.nextLine();
+            
+        }
     }
-
 }
+
+

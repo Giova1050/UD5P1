@@ -14,6 +14,18 @@ public class menu {
                 *****************************
                 """);
     }
+
+    public static void menuEdicion() {
+        System.out.println("""
+             ================================================
+             Dime el dato que quieres sustituir:
+             1.Nombre
+             2.Direccion
+             3.Horario
+             4.Puntuacion
+             ================================================
+             """);
+    }
 }
 
 /**
