@@ -24,7 +24,9 @@ public class herramientas {
     }
 
     public void mostrarRestaurante() {
-
+        for (int i = 0; i < listaRestaurante.size(); i++) {
+            System.out.println(listaRestaurante.get(i));
+        }
     }
 
     public void eliminarRestaurante() {
