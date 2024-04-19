@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import net.ripAdbisor.hostelerias.Restaurante;
+import net.ripAdbisor.hostelerias.menu.Menu;
 
 public class Herramientas {
 
@@ -46,14 +47,35 @@ public class Herramientas {
         }
     }
 
-    public void editarRestaurante(String nombre) {
-        String opcionRestaurante;
-        String opcionEditar;
-        for (int i = 0; i < listaRestaurante.size(); i++) {
-            System.out.println("Estos son todos los restaurantes para modificar, cual quieres modificar "
-                    + listaRestaurante.get(i));
-            opcionRestaurante = scanner.nextLine();
+    public static void editarRestaurante() {
+        String nombreRestauranteEditar = JOptionPane.showInputDialog("Introduce el nombre del restaurante que quieres editar:");;
+        for (Restaurante restaurante : listaRestaurante) {
+            if (restaurante.getNombre().equals(nombreRestauranteEditar)) {
+                opcionEdicionRestaurante(restaurante);
+            }
+        }
+    }
 
+    public static void opcionEdicionRestaurante(Restaurante restaurante) {
+        String opcionEdicion = Menu.menuEdicion();
+        switch (opcionEdicion) {
+            case "1":
+                String nuevoNombre = JOptionPane.showInputDialog("Dime el nuevo nombre");
+                restaurante.setNombre(nuevoNombre);               
+                break;
+            case "2":
+                String nuevaDireccion = JOptionPane.showInputDialog("Dime la nueva direccion");
+                restaurante.setDireccion(nuevaDireccion);
+                break;
+            case "3":
+                int nuevoHorario = Integer.parseInt(JOptionPane.showInputDialog("Dime el nuevo horario"));
+                restaurante.setHorario(nuevoHorario);
+                break;
+            case "4": 
+                float nuevaPuntuacion = Float.parseFloat(JOptionPane.showInputDialog("Dime la nueva puntiacion"));
+                restaurante.setPuntuacion(nuevaPuntuacion);
+            default:
+                break;
         }
     }
 }
