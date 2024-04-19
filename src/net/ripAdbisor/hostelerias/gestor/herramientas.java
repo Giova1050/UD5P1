@@ -1,28 +1,25 @@
 package net.ripAdbisor.hostelerias.gestor;
 
+import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import net.ripAdbisor.hostelerias.Restaurante;
 
 public class herramientas {
 
-    ArrayList<String> listaRestaurante = new ArrayList<>();
+    static ArrayList<Restaurante> listaRestaurante = new ArrayList<>();
+    final static Scanner scanner = new Scanner(System.in);
 
-    private String nombre;
-    private String direccion;
-    private int aforo;
-    private String tipoRestaurante;
+    public static void añadirRestaurante() {
 
-    public herramientas(String nombre, String direccion, int aforo, String tipoRestaurante) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.aforo = aforo;
-        this.tipoRestaurante = tipoRestaurante;
-    }
+        Restaurante nuevoRestaurante = new Restaurante(null, null, 0, 0);
 
-    public void añadirRestaurante() {
-        
-    }
-
-    public void editarRestaurante() {
+        for (Restaurante nuevRestaurante : listaRestaurante) {
+            if (nuevRestaurante == null) {
+                listaRestaurante.add(nuevoRestaurante);
+            }
+        }
 
     }
 
@@ -33,4 +30,9 @@ public class herramientas {
     public void eliminarRestaurante() {
 
     }
+
+    public void editarRestaurante() {
+
+    }
+
 }
