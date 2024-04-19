@@ -1,30 +1,31 @@
 package net.ripAdbisor.hostelerias.menu;
 
-public class menu {
+import javax.swing.JOptionPane;
 
-    public void mostrarMenu() {
+public class Menu {
+
+    public static void mostrarMenu() {
         System.out.println("""
-                *****************************
-                    SELECCIONA UNA OPCION
-                    1. Añadir restaurante
-                    2. Editar restaurante
-                    3. Mostrar restaurante
-                    4. Eliminar empleado
-                    Q. Salir del programa
-                *****************************
-                """);
+            *****************************
+                SELECCIONA UNA OPCION
+                1. Añadir restaurante
+                2. Editar restaurante
+                3. Mostrar restaurante
+                4. Eliminar empleado
+                Q. Salir del programa
+            *****************************
+            """);
     }
 
-    public static void menuEdicion() {
-        System.out.println("""
-             ================================================
-             Dime el dato que quieres sustituir:
-             1.Nombre
-             2.Direccion
-             3.Horario
-             4.Puntuacion
-             ================================================
-             """);
+    public static String menuEdicion() {
+        return JOptionPane.showInputDialog(null, """
+            Dime el dato que quieres sustituir:
+            1.Nombre
+            2.Direccion
+            3.Horario
+            4.Puntuacion
+            """, "Editar", JOptionPane.INFORMATION_MESSAGE);
+        
     }
 }
 
