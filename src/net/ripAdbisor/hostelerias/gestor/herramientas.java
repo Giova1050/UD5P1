@@ -14,12 +14,16 @@ public class Herramientas {
 
     public static void añadirRestaurante() {
 
-        String nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante:");
-        String direccion = JOptionPane.showInputDialog("Introduce la direccion: ");
-        int horario = Integer.parseInt(JOptionPane.showInputDialog("Introduce el horario"));
-        float puntuacion = Float.parseFloat(JOptionPane.showInputDialog("Introduce su puntuacion"));
-        Restaurante nuevoRestaurante = new Restaurante(nombre, direccion, horario, puntuacion);
-        listaRestaurante.add(nuevoRestaurante);
+        try {
+            String nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante:");
+            String direccion = JOptionPane.showInputDialog("Introduce la direccion: ");
+            int horario = Integer.parseInt(JOptionPane.showInputDialog("Introduce el horario"));
+            float puntuacion = Float.parseFloat(JOptionPane.showInputDialog("Introduce su puntuacion"));
+            Restaurante nuevoRestaurante = new Restaurante(nombre, direccion, horario, puntuacion);
+            listaRestaurante.add(nuevoRestaurante);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Se ha introducido una cadena en vez de numeros", "Error", 0);
+        }
     }
 
     public static void mostrarRestaurante() {
@@ -33,22 +37,24 @@ public class Herramientas {
         String opcionEliminar;
         boolean borrar = false;
         for (int i = 0; i < listaRestaurante.size(); i++) {
-            System.out.println("Estos son los restaurantes creados, cual deseas eleminiar?");
-            System.out.println(listaRestaurante.get(i));
-            opcionEliminar = scanner.nextLine();
+            opcionEliminar = JOptionPane.showInputDialog(
+                    "Estos son los restaurantes creados, cual deseas eleminiar? " + listaRestaurante.get(i));
             for (Restaurante restaurante : listaRestaurante) {
                 if (restaurante.getNombre().equalsIgnoreCase(opcionEliminar)) {
                     listaRestaurante.remove(restaurante);
                     borrar = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existe ese restaurante!!", "Error", i);
                 }
             }
             String mensajeborrar = borrar ? "Se ha borrado el restaurante" : "No se ha borrado el restaurante";
-            System.out.println(mensajeborrar);
+            JOptionPane.showMessageDialog(null, mensajeborrar, "Borrado", i);
         }
     }
 
     public static void editarRestaurante() {
-        String nombreRestauranteEditar = JOptionPane.showInputDialog("Introduce el nombre del restaurante que quieres editar:");;
+        String nombreRestauranteEditar = JOptionPane
+                .showInputDialog("Introduce el nombre del restaurante que quieres editar:");
         for (Restaurante restaurante : listaRestaurante) {
             if (restaurante.getNombre().equals(nombreRestauranteEditar)) {
                 opcionEdicionRestaurante(restaurante);
@@ -61,19 +67,27 @@ public class Herramientas {
         switch (opcionEdicion) {
             case "1":
                 String nuevoNombre = JOptionPane.showInputDialog("Dime el nuevo nombre");
-                restaurante.setNombre(nuevoNombre);               
+                restaurante.setNombre(nuevoNombre);
                 break;
             case "2":
                 String nuevaDireccion = JOptionPane.showInputDialog("Dime la nueva direccion");
                 restaurante.setDireccion(nuevaDireccion);
                 break;
             case "3":
-                int nuevoHorario = Integer.parseInt(JOptionPane.showInputDialog("Dime el nuevo horario"));
-                restaurante.setHorario(nuevoHorario);
+                try {
+                    int nuevoHorario = Integer.parseInt(JOptionPane.showInputDialog("Dime el nuevo horario"));
+                    restaurante.setHorario(nuevoHorario);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Se ha introducido una cadena en vez de numeros", "Error", 0);
+                }
                 break;
-            case "4": 
-                float nuevaPuntuacion = Float.parseFloat(JOptionPane.showInputDialog("Dime la nueva puntiacion"));
-                restaurante.setPuntuacion(nuevaPuntuacion);
+            case "4":
+                try {
+                    float nuevaPuntuacion = Float.parseFloat(JOptionPane.showInputDialog("Dime la nueva puntiacion"));
+                    restaurante.setPuntuacion(nuevaPuntuacion);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Se ha introducido una cadena en vez de numeros", "Error", 0);
+                }
             default:
                 break;
         }
