@@ -49,5 +49,4 @@ public class Restaurante {
     public String toString() {
         return this.nombre;
     }
-
 }

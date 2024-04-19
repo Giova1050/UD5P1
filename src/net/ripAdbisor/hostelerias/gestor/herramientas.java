@@ -14,14 +14,17 @@ public class Herramientas {
     public static void añadirRestaurante() {
 
         String nombre = JOptionPane.showInputDialog("Introduce el nombre del restaurante:");
-        Restaurante nuevoRestaurante = new Restaurante(nombre, null, 0, 0);
+        String direccion = JOptionPane.showInputDialog("Introduce la direccion: ");
+        int horario = Integer.parseInt(JOptionPane.showInputDialog("Introduce el horario"));
+        float puntuacion = Float.parseFloat(JOptionPane.showInputDialog("Introduce su puntuacion"));
+        Restaurante nuevoRestaurante = new Restaurante(nombre, direccion, horario, puntuacion);
         listaRestaurante.add(nuevoRestaurante);
-
     }
 
     public static void mostrarRestaurante() {
         for (int i = 0; i < listaRestaurante.size(); i++) {
-            JOptionPane.showMessageDialog(null, listaRestaurante.get(i), "Restaurante " + (i+1), JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, listaRestaurante.get(i), "Restaurante " + (i + 1),
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -50,9 +53,7 @@ public class Herramientas {
             System.out.println("Estos son todos los restaurantes para modificar, cual quieres modificar "
                     + listaRestaurante.get(i));
             opcionRestaurante = scanner.nextLine();
-            
+
         }
     }
 }
-
-
