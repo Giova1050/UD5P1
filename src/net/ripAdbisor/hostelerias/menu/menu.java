@@ -2,30 +2,51 @@ package net.ripAdbisor.hostelerias.menu;
 
 import javax.swing.JOptionPane;
 
+import net.ripAdbisor.hostelerias.gestor.Herramientas;
+
 public class Menu {
 
     public static void mostrarMenu() {
-        System.out.println("""
-            *****************************
-                SELECCIONA UNA OPCION
-                1. Añadir restaurante
-                2. Editar restaurante
-                3. Mostrar restaurante
-                4. Eliminar empleado
-                Q. Salir del programa
-            *****************************
-            """);
+        String menu = JOptionPane.showInputDialog(null, """
+                    SELECCIONA UNA OPCION
+                    1. Añadir restaurante
+                    2. Editar restaurante
+                    3. Mostrar restaurante
+                    4. Eliminar restaurante
+                    Q. Salir del programa
+                """, "RipAdbisor", JOptionPane.INFORMATION_MESSAGE);
+        Boolean bucle = true;
+        while (bucle) {
+            switch (menu) {
+                case "1":
+                    Herramientas.añadirRestaurante();
+                    break;
+                case "2":
+                    Herramientas.editarRestaurante();
+                    break;
+                case "3":
+                    Herramientas.mostrarRestaurante();
+                    break;
+                case "4":
+                    Herramientas.eliminarRestaurante();
+                    break;
+                case "5":
+                    bucle = false;
+                default:
+                    break;
+            }
+        }
     }
 
     public static String menuEdicion() {
         return JOptionPane.showInputDialog(null, """
-            Dime el dato que quieres sustituir:
-            1.Nombre
-            2.Direccion
-            3.Horario
-            4.Puntuacion
-            """, "Editar", JOptionPane.INFORMATION_MESSAGE);
-        
+                Dime el dato que quieres sustituir:
+                1.Nombre
+                2.Direccion
+                3.Horario
+                4.Puntuacion
+                """, "Editar", JOptionPane.INFORMATION_MESSAGE);
+
     }
 }
 

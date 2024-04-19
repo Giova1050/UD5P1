@@ -29,7 +29,7 @@ public class Herramientas {
         }
     }
 
-    public void eliminarRestaurante() {
+    public static void eliminarRestaurante() {
         String opcionEliminar;
         boolean borrar = false;
         for (int i = 0; i < listaRestaurante.size(); i++) {
