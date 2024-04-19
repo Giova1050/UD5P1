@@ -7,7 +7,10 @@ import net.ripAdbisor.hostelerias.gestor.Herramientas;
 public class Menu {
 
     public static void mostrarMenu() {
-        String menu = JOptionPane.showInputDialog(null, """
+        String menu;
+        Boolean bucle = true;
+        while (bucle) {
+            menu = JOptionPane.showInputDialog(null, """
                     SELECCIONA UNA OPCION
                     1. Añadir restaurante
                     2. Editar restaurante
@@ -15,8 +18,6 @@ public class Menu {
                     4. Eliminar restaurante
                     Q. Salir del programa
                 """, "RipAdbisor", JOptionPane.INFORMATION_MESSAGE);
-        Boolean bucle = true;
-        while (bucle) {
             switch (menu) {
                 case "1":
                     Herramientas.añadirRestaurante();
