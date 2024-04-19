@@ -30,7 +30,21 @@ public class herramientas {
     }
 
     public void eliminarRestaurante() {
-
+        String opcionEliminar;
+        boolean borrar = false;
+        for (int i = 0; i < listaRestaurante.size(); i++) {
+            System.out.println("Estos son los restaurantes creados, cual deseas eleminiar?");
+            System.out.println(listaRestaurante.get(i));
+            opcionEliminar = scanner.nextLine();
+            for (Restaurante restaurante : listaRestaurante) {
+                if (restaurante.getNombre().equalsIgnoreCase(opcionEliminar) ) {
+                    restaurante = null;
+                    borrar = true;
+                    String mensajeborrar = borrar ? "Se ha borrado el restaurante" : "No se ha borrado el restaurante";
+                    System.out.println(mensajeborrar);
+                }
+            }
+        }
     }
 
     public void editarRestaurante() {
